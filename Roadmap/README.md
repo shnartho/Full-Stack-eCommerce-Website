@@ -1,2 +1,2 @@
-# Roadmap🛍️
-Project plan
+# Roadmap� 🗺️
+Project plan and UML class diagram
