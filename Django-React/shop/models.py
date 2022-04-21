@@ -49,6 +49,7 @@ ORDER_STATUS = (
     ("Order Completed", "Order Completed"),
     ("Order Canceled", "Order Canceled"),
 )
+
 class Order(models.Model):
     cart  = models.OneToOneField(Cart,on_delete=models.CASCADE)
     address = models.CharField(max_length=255)
