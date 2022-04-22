@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.single_product{
+  align-items: center;
+}
+.single_product:hover{
+  background-color: rgb(215, 255, 255);
+}
+
+.single_product img{
+  height: 150px;
+  width: 250px;
+  object-fit: contain;
+}
+
+.btn-primary{
+  background-color: red;
+  width: 200px;
+}
+
+.btn-primary:hover{
+  background-color: green;
+}
+
+.centerimg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.homepage_pagination{
+  display: flex;
+  float: left;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  margin-left: 8cm;
+
+}
+

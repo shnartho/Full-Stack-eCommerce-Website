@@ -2,8 +2,8 @@ import Cookies from 'js-cookie';
 
 
 
-// export const domain = "http://127.0.0.1:8000";
-export const domain = "";
+export const domain = "http://127.0.0.1:8000";
+//export const domain = "";
 
 /*
     window.localStorage.setItem('myCat', 'Tom');
