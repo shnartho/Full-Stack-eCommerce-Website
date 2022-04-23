@@ -1,5 +1,5 @@
 # Full-Stack-eCommerce-Website🛍️
-eCommerce Website Using Django🎯🎖️ , Reactjs🎖️ , SQLite, PostgresSQL, Cloud (AWS, Heroku deploment) 🛒 <br>
+eCommerce Website Using Django🎯🎖️ , Reactjs🎖️ , SQLite, PostgresSQL, Cloud (Heroku deploment) 🛒 <br>
 <br>
 <h5>Under development ...... ⏰</h5>
 
