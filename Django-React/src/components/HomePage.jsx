@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 import { domain } from "../env"
+import { Link } from 'react-router-dom'
 import SingleProduct from './SingleProduct'
 
 const HomePage = () => {
     const [products, setProducts] = useState(null)
+    const [category, setCategory] = useState(null)
     useEffect(() => {
-        const getData = async () => {
+        const getData = async() => {
             await Axios({
                 method: "get",
                 url: `${domain}/api/product/`
@@ -16,6 +18,19 @@ const HomePage = () => {
             })
         }
         getData()
+    }, [])
+    useEffect(()=>{
+        const getcategories = async() => {
+            await Axios({
+                method:"get",
+                url:`${domain}/api/category/`
+            }).then(response =>{
+                console.log(response.data);
+                setCategory(response.data);
+            })
+
+        }
+        getcategories()
     }, [])
     const nextpage = async () => {
         Axios({
@@ -59,7 +74,7 @@ const HomePage = () => {
                             <div>
                                 {
                                     products?.next !==null ? (
-                                        <button onClick={nextpage} className="btn btn-success" >Next</button>
+                                        <button onClick={nextpage} className="btn btn-success">Next</button>
                                     ):(
                                         <button className="btn btn-success" disabled>Next</button>
                                     ) 
@@ -71,7 +86,17 @@ const HomePage = () => {
 
                 </div>
 
-                <div className="col-md-3 bg-dark"></div>
+                <div className="col-md-3">
+                    <h1>All Categories</h1>
+                    {
+                        category !== null && 
+                        category?.map((category, i)=>(
+                            <div className="my-2" key={i}>
+                                <Link to={`/category/${category?.id}`} className="btn btn-success">{category?.title}</Link>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
 
         </div>

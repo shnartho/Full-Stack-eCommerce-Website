@@ -7,6 +7,8 @@ import SingleProduct from './SingleProduct'
 const ProductsDetails = () => {
     const { id } = useParams()
     const [product, setProduct] = useState(null)
+    const [categoryproducts, setcategoryproducts] = useState(null) 
+
     useEffect(()=>{
         const getData = async() =>{
             await Axios({
@@ -15,10 +17,21 @@ const ProductsDetails = () => {
             }).then(response=>{
                 console.log(response.data);
                 setProduct(response.data);
+                getcategory(response?.data?.category['id'])
             })
         }
         getData()
-    },[])
+    },[id])
+    const getcategory = async(id) => {
+            await Axios({
+                method:"get",
+                url: `${domain}/api/category/${id}/`
+            }).then(response=>{
+                console.log(response.data)
+                setcategoryproducts(response.data)
+            })
+    }
+
   return (
     <div className="container">
         {
@@ -39,6 +52,17 @@ const ProductsDetails = () => {
                 </div>
             )
         }
+        <div><h1>Related Products</h1></div>
+        <div className='row'>
+            {
+                categoryproducts !==null &&
+                categoryproducts[0]?.category_products?.map((product, i)=>(
+                    <div className='col-md-3' key={i}>
+                        <SingleProduct item={product} />
+                    </div>
+                ))
+            }
+        </div>
     </div>
   )
 }
