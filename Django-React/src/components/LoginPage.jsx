@@ -15,7 +15,10 @@ const LoginPage = () => {
                 'password':password
             }
         }).then(response =>{
-            console.log(response.data);
+            console.log(response.data['token']);
+            window.localStorage.setItem("token", response.data['token'])
+        }).catch(_=>{
+          alert("Wrong Password!Try again")
         })
     }
   return (

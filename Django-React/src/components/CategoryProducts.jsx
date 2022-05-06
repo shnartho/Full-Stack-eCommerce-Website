@@ -24,7 +24,7 @@ const CategoryProducts = () => {
         <div className="container">
             <h1>Category: {category?.title}</h1>
             <h2>Category Products</h2>
-            <div className="row">
+            <div className="row" >
                 {
                     category !== null && 
                     category?.category_products?.map((product, i) =>(
