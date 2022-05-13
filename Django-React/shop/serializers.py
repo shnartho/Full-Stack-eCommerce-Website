@@ -1,6 +1,6 @@
 from distutils import dep_util
 from importlib.metadata import files
-from attr import field
+from attr import field, fields
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from .models import *
@@ -36,4 +36,14 @@ class ProfileSerializer(serializers.ModelSerializer):
         response = super().to_representation(instance)
         response['prouser'] = Userserializer(instance.prouser).data
         return response
-        
+
+class Cartserializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cart
+        fields = "__all__"
+
+class CartProductserializer(serializers.ModelSerializer):
+    class Meta:
+        model = CartProduct
+        fields = "__all__"
+        depth = 1

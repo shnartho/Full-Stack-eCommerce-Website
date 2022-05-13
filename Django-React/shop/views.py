@@ -91,3 +91,18 @@ class ProfileImageUpdate(views.APIView):
             response_res = {"error":True, "message":"Profile image is not updated"}
 
         return Response(response_res)
+
+
+class Mycart(viewsets.ViewSet):
+    permission_classes = [IsAuthenticated, ]
+    Authentication_classes = [TokenAuthentication, ]
+    def list(self, request):
+        query = Cart.objects.filter(customer = request.user.profile)
+        serializers = Cartserializer(query, many=True)
+        all_data = []
+        for cart in serializers.data:
+            cart_product = CartProduct.objects.filter(cart=cart['id'])
+            cart_product_serializer = CartProductserializer(cart_product, many=True)
+            cart["cartproduct"]=cart_product_serializer.data
+            all_data.append(cart)
+        return Response(all_data.data)
